@@ -10,6 +10,6 @@
       { "src": "/api/generate", "dest": "/api/generate.py" }
     ],
     "env": {
-      "ANTHROPIC_API_KEY": "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"
+      "ANTHROPIC_API_KEY": ""
     }
   }
