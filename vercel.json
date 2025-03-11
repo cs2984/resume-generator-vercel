@@ -1,15 +1,8 @@
 {
-    "version": 2,
-    "functions": {
-      "api/generate.py": {
-        "memory": 1024,
-        "maxDuration": 60
-      }
-    },
-    "routes": [
-      { "src": "/api/generate", "dest": "/api/generate.py" }
-    ],
-    "env": {
-      "ANTHROPIC_API_KEY": ""
+  "functions": {
+    "pages/api/generate.js": {
+      "memory": 1024,
+      "maxDuration": 60
     }
   }
+}
