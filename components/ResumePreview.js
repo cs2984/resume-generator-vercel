@@ -1,11 +1,17 @@
 import { useRef } from 'react';
-import html2pdf from 'html2pdf.js';
 
 export default function ResumePreview({ resumeData }) {
   const resumeRef = useRef(null);
   
-  const generatePDF = () => {
+  const generatePDF = async () => {
+    // Only run in browser
+    if (typeof window === 'undefined') return;
+    
+    // Dynamically import html2pdf only when the button is clicked
+    const html2pdf = (await import('html2pdf.js')).default;
+    
     const element = resumeRef.current;
+    if (!element) return;
     
     const opt = {
       margin: [0.5, 0.5, 0.5, 0.5],
@@ -16,7 +22,8 @@ export default function ResumePreview({ resumeData }) {
     };
     
     html2pdf().set(opt).from(element).save();
-  };
+  }; 
+
   
   // Graceful handling if resumeData is malformed
   if (!resumeData || !resumeData.personal_information) {
